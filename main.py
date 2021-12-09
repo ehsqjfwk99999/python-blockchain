@@ -1,4 +1,4 @@
-from transaction import Transaction
+from txnpool import TransactionPool
 from wallet import Wallet
 
 if __name__ == "__main__":
@@ -8,10 +8,15 @@ if __name__ == "__main__":
     amount = 1
     transType = "TRANSFER"
 
-    transaction = Transaction(sender, receiver, amount, transType)
-
     wallet = Wallet()
-    signature = wallet.sign(transaction.toJson())
+    f_wallet = Wallet()
+    pool = TransactionPool()
 
-    transaction.sign(signature)
-    print(transaction.toJson())
+    transaction = wallet.createTransaction(receiver, amount, transType)
+
+    if not pool.transactionExists(transaction):
+        pool.addTransaction(transaction)
+    if not pool.transactionExists(transaction):
+        pool.addTransaction(transaction)
+
+    print(pool.transactions)
