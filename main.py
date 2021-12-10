@@ -1,5 +1,7 @@
 from txnpool import TransactionPool
 from wallet import Wallet
+from block import Block
+import pprint
 
 if __name__ == "__main__":
 
@@ -16,7 +18,10 @@ if __name__ == "__main__":
 
     if not pool.transactionExists(transaction):
         pool.addTransaction(transaction)
-    if not pool.transactionExists(transaction):
-        pool.addTransaction(transaction)
 
-    print(pool.transactions)
+    block = wallet.createBlock(pool.transactions, "lastHash", 1)
+
+    signatureValid = wallet.signatureValid(
+        block.payload(), block.signature, f_wallet.publicKeyString()
+    )
+    print(signatureValid)
