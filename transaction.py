@@ -1,10 +1,10 @@
-import uuid
-import time
 import copy
+import time
+import uuid
 
 
 class Transaction:
-    def __init__(self, senderPublicKey, receiverPublicKey, amount, transType):
+    def __init__(self, senderPublicKey, receiverPublicKey, amount, transType) -> None:
         self.senderPublicKey = senderPublicKey
         self.receiverPublicKey = receiverPublicKey
         self.amount = amount
@@ -16,7 +16,7 @@ class Transaction:
     def toJson(self):
         return self.__dict__
 
-    def sign(self, signature):
+    def sign(self, signature) -> None:
         self.signature = signature
 
     def payload(self):
@@ -24,7 +24,7 @@ class Transaction:
         jsonRepresentation["signature"] = ""
         return jsonRepresentation
 
-    def equals(self, transaction):
+    def equals(self, transaction) -> bool:
         if self.id == transaction.id:
             return True
         else:
