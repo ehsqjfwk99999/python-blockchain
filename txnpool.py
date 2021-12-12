@@ -1,6 +1,6 @@
-from transaction import Transaction
-
 from typing import List
+
+from transaction import Transaction
 
 
 class TransactionPool:
@@ -15,3 +15,14 @@ class TransactionPool:
             if poolTransaction.equals(transaction):
                 return True
         return False
+
+    def removeFormPool(self, transactions: List[Transaction]) -> None:
+        newPoolTransactions = []
+        for poolTransaction in self.transactions:
+            insert = True
+            for transaction in transactions:
+                if poolTransaction.equals(transaction):
+                    insert = False
+            if insert:
+                newPoolTransactions.append(poolTransaction)
+        self.transactions = newPoolTransactions

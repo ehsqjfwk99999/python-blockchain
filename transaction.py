@@ -4,7 +4,9 @@ import uuid
 
 
 class Transaction:
-    def __init__(self, senderPublicKey, receiverPublicKey, amount, transType) -> None:
+    def __init__(
+        self, senderPublicKey: str, receiverPublicKey: str, amount: int, transType
+    ) -> None:
         self.senderPublicKey = senderPublicKey
         self.receiverPublicKey = receiverPublicKey
         self.amount = amount
