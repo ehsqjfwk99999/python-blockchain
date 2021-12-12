@@ -1,8 +1,8 @@
 from typing import Any, List
 
 from account_model import AccountModel
-from bcutils import BlockchainUtils
 from block import Block
+from blockchain_utils import BlockchainUtils
 from transaction import Transaction
 
 

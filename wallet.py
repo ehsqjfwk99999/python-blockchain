@@ -1,8 +1,9 @@
 from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5
-from bcutils import BlockchainUtils
-from transaction import Transaction
+
 from block import Block
+from blockchain_utils import BlockchainUtils
+from transaction import Transaction
 
 
 class Wallet:
