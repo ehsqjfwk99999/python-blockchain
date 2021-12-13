@@ -16,7 +16,7 @@ class TransactionPool:
                 return True
         return False
 
-    def removeFormPool(self, transactions: List[Transaction]) -> None:
+    def removeFromPool(self, transactions: List[Transaction]) -> None:
         newPoolTransactions = []
         for poolTransaction in self.transactions:
             insert = True
@@ -26,3 +26,6 @@ class TransactionPool:
             if insert:
                 newPoolTransactions.append(poolTransaction)
         self.transactions = newPoolTransactions
+
+    def forgerRequired(self):
+        return len(self.transactions) >= 1

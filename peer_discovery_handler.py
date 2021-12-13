@@ -19,16 +19,16 @@ class PeerDiscoveryHandler:
 
     def status(self) -> None:
         while True:
-            print("Current Connections")
+            print("Current Connections:")
             for peer in self.socketCommunication.peers:
                 print(f"{peer.ip} : {peer.port}")
-            time.sleep(10)
+            time.sleep(5)
 
     def discovery(self) -> None:
         while True:
             handshakeMessage = self.handshakeMessage()
             self.socketCommunication.broadcast(handshakeMessage)
-            time.sleep(10)
+            time.sleep(5)
 
     def handshake(self, connect_node) -> None:
         handshakeMessage = self.handshakeMessage()

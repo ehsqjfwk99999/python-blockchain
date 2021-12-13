@@ -1,8 +1,8 @@
-from transaction import Transaction
-
-import time
 import copy
+import time
 from typing import List
+
+from transaction import Transaction
 
 
 class Block:
@@ -18,7 +18,7 @@ class Block:
 
     @staticmethod
     def genesis():
-        genesisBlock: Block = Block([], "genesisHash", "genesis", 0)
+        genesisBlock = Block([], "genesisHash", "genesis", 0)
         genesisBlock.timestamp = 0
         return genesisBlock
 
