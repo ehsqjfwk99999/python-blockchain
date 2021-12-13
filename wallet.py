@@ -42,7 +42,9 @@ class Wallet:
         return transaction
 
     def createBlock(self, transactions, lastHash, blockCount):
+        print(f"createblock : {self.publicKeyString()}")
+        print(f"createblock2 : {id(self)}")
         block = Block(transactions, lastHash, self.publicKeyString(), blockCount)
-        signature = self.sign(block.toJson())
+        signature = self.sign(block.payload())
         block.sign(signature)
         return block

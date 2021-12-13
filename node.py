@@ -22,6 +22,7 @@ class Node:
         self.wallet = Wallet()
         self.blockchain = Blockchain()
         if key is not None:
+            print("not none!!!!!!!!!!")
             self.wallet.fromKey(key)
 
     def startP2P(self) -> None:
@@ -92,7 +93,7 @@ class Node:
     def forge(self):
         forger = self.blockchain.nextForger()
         if forger == self.wallet.publicKeyString():
-            print("I am the next forger")
+            print(">>> I am the next forger")
             block = self.blockchain.createBlock(
                 self.transactionPool.transactions, self.wallet
             )
@@ -101,4 +102,4 @@ class Node:
             encodedMessage = BlockchainUtils.encode(message)
             self.p2p.broadcast(encodedMessage)
         else:
-            print("I am not the next forger")
+            print(">>> I am not the next forger")

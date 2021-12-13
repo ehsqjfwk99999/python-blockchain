@@ -16,7 +16,9 @@ class Blockchain:
 
     def addBlock(self, block: Block) -> None:
         self.executeTransactions(block.transactions)
-        self.blocks.append(block)
+        if self.blocks[-1].blockCount < block.blockCount:
+            self.blocks.append(block)
+        # self.blocks.append(block)
 
     def toJson(self) -> Any:
         data = {}
@@ -27,7 +29,7 @@ class Blockchain:
         return data
 
     def blockCountValid(self, block: Block) -> bool:
-        if self.blocks[-1].blockCount == block.blockCount - 1:
+        if self.blocks[-1].blockCount >= block.blockCount - 1:
             return True
         else:
             return False
